@@ -63,4 +63,9 @@ public class ToiletBank implements Bank {
         }
     }
 
+        public String initializePassword() {    // 비밀번호 입력 메소드
+            System.out.println("비밀번호를 입력해주세요.(4자리)");
+            String password = sc.next();
+            return password;
+        }
 }
