@@ -1,27 +1,24 @@
 package toiletbank.domain.account;
 
-import toiletbank.constant.AccountType;
-import toiletbank.constant.Bank;
+import toiletbank.constants.AccountType;
+import toiletbank.constants.Bank;
 
 import java.math.BigInteger;
-import java.util.Scanner;
 
 abstract class Account {
     private Bank bank;
     private AccountType type;
     private BigInteger balance;
     private double interestRate;
-    private String accountNumber;
-//    private String number;                // 계좌 번호 필드명이 더 구체적이면 좋을 것 같아서 number에서 accountNumber로 변경하였습니다.
+    private String number;
     private String password;
-//    private String UserName; // 미정
 
     public Account(Bank bank, AccountType type, BigInteger balance, double interestRate, String password) {   // AccountType에 뭐가 들어가는지 잘 모르겠어요
         this.bank = bank;
         this.type = type;
         this.balance = balance;
         this.interestRate = interestRate;
-        this.accountNumber = String.valueOf((int) (Math.random() * 9000) + 1000);      // 1000 ~ 9999, 계좌번호 4자리 랜덤으로 생성
+        this.number = String.valueOf((int) (Math.random() * 9000) + 1000);      // 1000 ~ 9999, 계좌번호 4자리 랜덤으로 생성
         this.password = password;
     }
 
@@ -42,7 +39,7 @@ abstract class Account {
     }
 
     public String getAccountNumber() {
-        return accountNumber;
+        return number;
     }
 
     public String getPassword() {
