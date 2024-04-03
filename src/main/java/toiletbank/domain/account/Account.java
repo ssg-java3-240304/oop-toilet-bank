@@ -1,17 +1,21 @@
 package toiletbank.domain.account;
 
+import java.util.ArrayList;
+import java.util.List;
 import toiletbank.constants.AccountType;
 import toiletbank.constants.Bank;
-
 import java.math.BigInteger;
+import toiletbank.domain.Transaction;
 
-abstract class Account {
-    private Bank bank;
-    private AccountType type;
-    private BigInteger balance;
+public abstract class Account {
+
+    private final List<Transaction> transactions;
+    private final Bank bank;
+    private final AccountType type;
+    private final BigInteger balance;
     private double interestRate;
-    private String number;
-    private String password;
+    private final String number;
+    private final String password;
 
     public Account(Bank bank, AccountType type, BigInteger balance, double interestRate, String password) {   // AccountType에 뭐가 들어가는지 잘 모르겠어요
         this.bank = bank;
@@ -20,6 +24,7 @@ abstract class Account {
         this.interestRate = interestRate;
         this.number = String.valueOf((int) (Math.random() * 9000) + 1000);      // 1000 ~ 9999, 계좌번호 4자리 랜덤으로 생성
         this.password = password;
+        this.transactions = new ArrayList<>();
     }
 
     public Bank getBank() {
@@ -38,12 +43,16 @@ abstract class Account {
         return interestRate;
     }
 
-    public String getAccountNumber() {
+    public String getNumber() {
         return number;
     }
 
     public String getPassword() {
         return password;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
     }
 
     // 이자 지급 메소드
