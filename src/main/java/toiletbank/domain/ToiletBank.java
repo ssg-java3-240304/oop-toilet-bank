@@ -1,5 +1,6 @@
 package toiletbank.domain;
 
+import java.math.BigInteger;
 import java.util.Scanner;
 
 public class ToiletBank implements Bank {
@@ -68,4 +69,10 @@ public class ToiletBank implements Bank {
             String password = sc.next();
             return password;
         }
+
+    public BigInteger saveAmount() {    // 계좌 개설 시 최초 저축금액 입력 메소드
+        System.out.println("저축할 금액을 입력해주세요.");
+        BigInteger amount = sc.nextBigInteger();
+        return amount;
+    }
 }
