@@ -1,12 +1,13 @@
-package toiletbank.domain;
+package toiletbank.domain.bank;
 
-import toiletbank.domain.account.SavingsAccount;
-
-import java.math.BigInteger;
 import java.util.Scanner;
 
-public class ToiletBank implements Bank {
+public class ToiletBank extends Bank {
     private Scanner sc = new Scanner(System.in);
+
+    public ToiletBank(String name) {
+        super(name);
+    }
 
     public void menu() {    // 은행 업무 입력 메소드
 
