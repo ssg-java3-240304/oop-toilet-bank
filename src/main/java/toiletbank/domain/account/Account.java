@@ -10,12 +10,12 @@ import toiletbank.domain.Transaction;
 public abstract class Account {
 
     private final List<Transaction> transactions;
-    private Bank bank;
-    private AccountType type;
-    private BigInteger balance;
+    private final Bank bank;
+    private final AccountType type;
+    private final BigInteger balance;
     private double interestRate;
-    private String number;
-    private String password;
+    private final String number;
+    private final String password;
 
     public Account(Bank bank, AccountType type, BigInteger balance, double interestRate, String password) {   // AccountType에 뭐가 들어가는지 잘 모르겠어요
         this.bank = bank;
