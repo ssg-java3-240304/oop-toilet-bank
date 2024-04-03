@@ -7,7 +7,7 @@ import toiletbank.constants.Bank;
 import java.math.BigInteger;
 import toiletbank.domain.Transaction;
 
-abstract class Account {
+public abstract class Account {
 
     private final List<Transaction> transactions;
     private Bank bank;
