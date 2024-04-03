@@ -1,7 +1,5 @@
 package toiletbank.domain;
 
-import toiletbank.domain.account.SavingsAccount;
-
 import java.math.BigInteger;
 import java.util.Scanner;
 
@@ -41,8 +39,8 @@ public class ToiletBank implements Bank {
         }
     }
 
-    public void createAccount() {   // 계좌 생성 메소드
-        String createAccountMenu = """
+    public void AccountTypeInput() {   // 생성 계좌 타입 입력 메소드
+        String AccountTypeInputMenu = """
                 ===============================
                    생성할 계좌 타입을 입력해주세요.
                 ===============================
@@ -54,7 +52,7 @@ public class ToiletBank implements Bank {
 
 
         while (true) {
-            System.out.print(createAccountMenu);
+            System.out.print(AccountTypeInputMenu);
             String choice = sc.next();
             switch (choice) {
 //                case "1": new SavingsAccount(initializePassword()); break;
@@ -66,4 +64,23 @@ public class ToiletBank implements Bank {
         }
     }
 
+    public String initializePassword() {    // 비밀번호 입력 메소드
+        System.out.println("비밀번호를 입력해주세요.(4자리)");
+        String password = sc.next();
+        return password;
+    }
+
+    public BigInteger saveAmount() {    // 정기 예금 또는 정기 적금 계좌 개설 시 최초 저축 금액 입력 메소드
+        System.out.println("저축할 금액을 입력해주세요.");
+        BigInteger amount = sc.nextBigInteger();
+        return amount;
+    }
+
+    public void printUnableToCreateAccount() {  // 계좌 생성 불가 출력
+                                                // 정기 예금 또는 정기 적금 계좌 생성 시 입출금 통장이 없다면 최초 저축 금액 이체할 계좌가 없어 생성 불가
+        String str = """
+                보유하고 계신 입출금 통장이 없어, 정기 예금 또는 정기 적금 계좌 생성이 불가합니다.
+                먼저, 입출금 통장을 개설해주세요.""";
+        System.out.println(str);
+    }
 }
