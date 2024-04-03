@@ -1,8 +1,5 @@
 package toiletbank.domain;
 
-import toiletbank.domain.account.SavingsAccount;
-
-import java.math.BigInteger;
 import java.util.Scanner;
 
 public class ToiletBank implements Bank {
@@ -41,8 +38,8 @@ public class ToiletBank implements Bank {
         }
     }
 
-    public void createAccount() {   // 계좌 생성 메소드
-        String createAccountMenu = """
+    public void AccountTypeInput() {   // 생성 계좌 타입 입력 메소드
+        String AccountTypeInputMenu = """
                 ===============================
                    생성할 계좌 타입을 입력해주세요.
                 ===============================
@@ -54,7 +51,7 @@ public class ToiletBank implements Bank {
 
 
         while (true) {
-            System.out.print(createAccountMenu);
+            System.out.print(AccountTypeInputMenu);
             String choice = sc.next();
             switch (choice) {
 //                case "1": new SavingsAccount(initializePassword()); break;
