@@ -1,6 +1,7 @@
 package toiletbank.repository;
 
 import toiletbank.domain.Customer;
+import toiletbank.domain.Customers;
 import toiletbank.domain.account.Account;
 import toiletbank.domain.account.FixedDeposit;
 import toiletbank.domain.account.SavingsAccount;
@@ -23,8 +24,8 @@ public class Repository {
         saveCustomers("ToiletBank", initToiletBank());
     }
 
-    public Map<Customer, List<Account>> initKbBank() {
-        final Map<Customer, List<Account>> customers = new HashMap<>();
+    public Customers initKbBank() {
+        final Customers customers = new Customers();
         final String name = "KbBank";
 
 
@@ -37,19 +38,19 @@ public class Repository {
 
         account1.add(savingsAccount);
         account1.add(fixedDeposit);
-        customers.put(new Customer("김나경", "990101-2111116"), account1);
+        customers.getCustomers().put(new Customer("김나경", "990101-2111116"), account1);
 
         // 심재람
         final List<Account> account2 = new ArrayList<>();
         TermDeposit termDeposit = new TermDeposit(new BigInteger("300000000"), "2345");
         account2.add(termDeposit);
-        customers.put(new Customer("심재람", "980101-2122226"), account2);
+        customers.getCustomers().put(new Customer("심재람", "980101-2122226"), account2);
 
         return customers;
     }
 
-    public Map<Customer, List<Account>> initHanaBank() {
-        final Map<Customer, List<Account>> customers = new HashMap<>();
+    public Customers initHanaBank() {
+        final Customers customers = new Customers();
         // 변성일
         final List<Account> account1 = new ArrayList<>();
         SavingsAccount savingsAccount = new SavingsAccount("1234");
@@ -58,21 +59,21 @@ public class Repository {
 
         account1.add(savingsAccount);
         account1.add(fixedDeposit);
-        customers.put(new Customer("변성일", "980101-2133336"), account1);
+        customers.getCustomers().put(new Customer("변성일", "980101-2133336"), account1);
 
         // 김나경
         final List<Account> account2 = new ArrayList<>();
 
         TermDeposit termDeposit = new TermDeposit(new BigInteger("530000"), "1234");
         account2.add(termDeposit);
-        customers.put(new Customer("김나경", "990101-2111116"), account2);
+        customers.getCustomers().put(new Customer("김나경", "990101-2111116"), account2);
 
         return customers;
 
     }
 
-    public Map<Customer, List<Account>> initToiletBank() {
-        final Map<Customer, List<Account>> customers = new HashMap<>();
+    public Customers initToiletBank() {
+        final Customers customers = new Customers();
 
         // 변성일
         final List<Account> account1 = new ArrayList<>();
@@ -82,20 +83,20 @@ public class Repository {
 
         account1.add(savingsAccount);
         account1.add(fixedDeposit);
-        customers.put(new Customer("변성일", "980101-2133336"), account1);
+        customers.getCustomers().put(new Customer("변성일", "980101-2133336"), account1);
 
         // 심재람
         final List<Account> account2 = new ArrayList<>();
 
         TermDeposit termDeposit = new TermDeposit(new BigInteger("530000"), "1234");
         account2.add(termDeposit);
-        customers.put(new Customer("심재람", "980101-2122226"), account2);
+        customers.getCustomers().put(new Customer("심재람", "980101-2122226"), account2);
 
         return customers;
     }
 
     // 파일에 데이터를 저장하는 메서드
-    private void saveCustomers(String name, Map<Customer, List<Account>> customers) {
+    private void saveCustomers(String name, Customers customers) {
         File customerFile = new File("src/main/java/toiletbank/repository/", name + ".dat");
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(customerFile))) {
             oos.writeObject(customers);
