@@ -12,8 +12,8 @@ public abstract class Account {
     private final List<Transaction> transactions;
     private final Bank bank;
     private final AccountType type;
-    private final BigInteger balance;
-    private double interestRate;
+    private BigInteger balance;
+    private final double interestRate;
     private final String number;
     private final String password;
 
@@ -53,6 +53,10 @@ public abstract class Account {
 
     public List<Transaction> getTransactions() {
         return transactions;
+    }
+
+    public void setBalance(BigInteger balance) {
+        this.balance = balance;
     }
 
     // 이자 지급 메소드
