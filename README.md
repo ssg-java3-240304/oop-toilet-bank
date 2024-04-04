@@ -17,7 +17,7 @@
 ## 🍕 순서도
 
 ---
-![순서도](https://github.com/jectgenius/oop-toilet-bank/commit/ead8d0c1783879185f702e19b7afe7b6e3056767)
+![순서도](https://github.com/jectgenius/oop-toilet-bank/blob/main/oop-toilet-bank%20%EC%88%9C%EC%84%9C%EB%8F%84_%ED%9D%B0%EC%83%89%EB%B0%B0%EA%B2%BD.drawio.png)
 
 
 ## 📌 기능
