@@ -1,5 +1,6 @@
 package toiletbank.domain.account;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import toiletbank.constants.AccountType;
@@ -7,7 +8,7 @@ import toiletbank.constants.Bank;
 import java.math.BigInteger;
 import toiletbank.domain.Transaction;
 
-public abstract class Account {
+public abstract class Account implements Serializable {
 
     private final List<Transaction> transactions;
     private final Bank bank;

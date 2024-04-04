@@ -1,6 +1,8 @@
 package toiletbank.domain;
 
-public class Customer {
+import java.io.Serializable;
+
+public class Customer implements Serializable {
     private final String name;
     private final String rrn; // 주민번호
 
