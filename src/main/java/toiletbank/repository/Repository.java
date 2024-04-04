@@ -89,7 +89,7 @@ public class Repository {
 
         TermDeposit termDeposit = new TermDeposit(new BigInteger("530000"), "1234");
         account2.add(termDeposit);
-        customers.put(new Customer("심재람", "980101-2111116"), account2);
+        customers.put(new Customer("심재람", "980101-2122226"), account2);
 
         return customers;
     }
