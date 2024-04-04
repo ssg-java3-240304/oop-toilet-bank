@@ -1,13 +1,13 @@
 package toiletbank.constants;
 
-public enum Bank {
-    TOILET_BANK("토일렛은행"),
-    KB_BANK("국민은행"),
-    HANA_BANK("하나은행");
+public enum Banks {
+    TOILET_BANK("Toilet Bank"),
+    KB_BANK("KB Bank"),
+    HANA_BANK("HANA Bank");
 
     private final String name;
 
-    Bank(String name) {
+    Banks(String name) {
         this.name = name;
     }
 

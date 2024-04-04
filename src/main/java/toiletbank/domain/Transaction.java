@@ -1,11 +1,12 @@
 package toiletbank.domain;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Transaction {
+public class Transaction implements Serializable {
     private LocalDateTime date;
     private BigInteger amount;
     private BigInteger balance;

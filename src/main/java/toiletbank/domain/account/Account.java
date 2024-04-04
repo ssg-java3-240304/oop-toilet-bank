@@ -1,34 +1,36 @@
 package toiletbank.domain.account;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
 import toiletbank.constants.AccountType;
-import toiletbank.constants.Bank;
+import toiletbank.constants.Banks;
 import java.math.BigInteger;
-import toiletbank.domain.Transaction;
+import java.util.Objects;
 
-public abstract class Account {
+import toiletbank.domain.Transactions;
 
-    private final List<Transaction> transactions;
-    private final Bank bank;
+public abstract class Account implements Serializable {
+
+    private static Integer value =0;
+    private final Transactions transactions;
+    private final Banks banks;
     private final AccountType type;
     private BigInteger balance;
     private final double interestRate;
     private final String number;
     private final String password;
 
-    public Account(Bank bank, AccountType type, BigInteger balance, double interestRate, String password) {   // AccountType에 뭐가 들어가는지 잘 모르겠어요
-        this.bank = bank;
+    public Account(Banks banks, AccountType type, BigInteger balance, double interestRate, String password) {   // AccountType에 뭐가 들어가는지 잘 모르겠어요
+        this.banks = banks;
         this.type = type;
         this.balance = balance;
         this.interestRate = interestRate;
-        this.number = String.valueOf((int) (Math.random() * 9000) + 1000);      // 1000 ~ 9999, 계좌번호 4자리 랜덤으로 생성
+        this.number = "1234-"+  String.format("%06d", value++);// 10자리
         this.password = password;
-        this.transactions = new ArrayList<>();
+        this.transactions = new Transactions();
     }
 
-    public Bank getBank() {
-        return bank;
+    public Banks getBank() {
+        return banks;
     }
 
     public AccountType getType() {
@@ -51,7 +53,7 @@ public abstract class Account {
         return password;
     }
 
-    public List<Transaction> getTransactions() {
+    public Transactions getTransactions() {
         return transactions;
     }
 
@@ -63,4 +65,16 @@ public abstract class Account {
     // 이자 지급 방식 구현이 어려워 보류
     abstract void payInterest();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account account = (Account) o;
+        return banks == account.banks && type == account.type && Objects.equals(number, account.number) && Objects.equals(password, account.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(banks, type, number, password);
+    }
 }
