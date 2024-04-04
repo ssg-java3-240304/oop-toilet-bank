@@ -77,4 +77,66 @@ public abstract class Account implements Serializable {
     public int hashCode() {
         return Objects.hash(banks, type, number, password);
     }
+
+    //입금 메서드
+
+    // amount(입금금액)
+    public void deposit(BigInteger amount){
+        if (isAmountValid(amount)) {
+            balance = balance.add(amount);
+        } else {
+            System.out.println("유효하지 않은 금액입니다.");
+        }
+    }
+
+    // 출금 메서드
+    public void withdraw(BigInteger amount) {
+        if (isAmountValid(amount) && balance.subtract(amount).compareTo(BigInteger.ZERO) >= 0){
+            balance = balance.subtract(amount);
+        } else {
+            System.out.println("유효하지 않은 금액이거나 잔액이 부족합니다.");
+        }
+    }
+
+    // 금액 검증 메서드
+    private boolean isAmountValid(BigInteger amount){
+        return amount.compareTo(BigInteger.ZERO) > 0;
+    }
+
+    // 계좌 이체 메서드
+    public static void transfer(Account from, Account to, BigInteger amount) {
+
+
+        // 계좌 종류 검증: 입출금 통장인지 확인
+        if (!from.isSavingsOrCheckingAccount()) {
+            System.out.println("이체 실패: 입출금 통장이 아닙니다.");
+            return;
+        }
+
+        // 잔액이 0원인지 확인
+        if (from.getBalance().compareTo(BigInteger.ZERO) == 0) {
+            System.out.println("이체 실패: 잔액이 0원입니다.");
+            return;
+        }
+
+        // 이체 로직
+        if (from.isAmountValid(amount) && from.getBalance().subtract(amount).compareTo(BigInteger.ZERO) >= 0) {
+            from.withdraw(amount);
+            to.deposit(amount);
+        } else {
+            System.out.println("이체할 수 없습니다: 유효하지 않은 금액이거나 출금 계좌의 잔액이 부족합니다.");
+        }
+
+    }
+
+    //입출금통장인지 확인
+    private boolean isSavingsOrCheckingAccount() {
+        return this.type == AccountType.SAVINGS_ACCOUNT;
+    }
+
+    // 비밀번호 검증 메소드
+    public boolean verifyPassword(String inputPassword) {
+        return this.password.equals(inputPassword);
+
+
 }
