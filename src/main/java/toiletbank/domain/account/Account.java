@@ -10,6 +10,7 @@ import toiletbank.domain.Transactions;
 
 public abstract class Account implements Serializable {
 
+    private static Integer value =0;
     private final Transactions transactions;
     private final Bank bank;
     private final AccountType type;
@@ -23,7 +24,7 @@ public abstract class Account implements Serializable {
         this.type = type;
         this.balance = balance;
         this.interestRate = interestRate;
-        this.number = String.valueOf((int) (Math.random() * 9000) + 1000);      // 1000 ~ 9999, 계좌번호 4자리 랜덤으로 생성
+        this.number = "1234-"+  String.format("%06d", value++);// 10자리
         this.password = password;
         this.transactions = new Transactions();
     }
