@@ -1,9 +1,14 @@
 package toiletbank;
 
 import toiletbank.domain.Customer;
+import toiletbank.domain.Transaction;
+import toiletbank.domain.Transactions;
 import toiletbank.domain.account.Account;
 import toiletbank.domain.bank.ToiletBank;
+import toiletbank.repository.Repository;
 
+import java.math.BigInteger;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -22,5 +27,12 @@ public class Application {
                 System.out.println(account.getType());
             }
         }
+
+        Transactions transactions = new Transactions();
+        transactions.add(new Transaction(LocalDateTime.now(),new BigInteger("1000"), new BigInteger("10000")));
+        transactions.add(new Transaction(LocalDateTime.now(),new BigInteger("-1000"), new BigInteger("10000")));
+        transactions.add(new Transaction(LocalDateTime.now(),new BigInteger("1000"), new BigInteger("10000")));
+
+        System.out.println(transactions);
     }
 }

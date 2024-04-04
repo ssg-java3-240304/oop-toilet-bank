@@ -1,16 +1,16 @@
 package toiletbank.domain.account;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import toiletbank.constants.AccountType;
 import toiletbank.constants.Bank;
 import java.math.BigInteger;
-import toiletbank.domain.Transaction;
+import java.util.Objects;
+
+import toiletbank.domain.Transactions;
 
 public abstract class Account implements Serializable {
 
-    private final List<Transaction> transactions;
+    private final Transactions transactions;
     private final Bank bank;
     private final AccountType type;
     private BigInteger balance;
@@ -25,7 +25,7 @@ public abstract class Account implements Serializable {
         this.interestRate = interestRate;
         this.number = String.valueOf((int) (Math.random() * 9000) + 1000);      // 1000 ~ 9999, 계좌번호 4자리 랜덤으로 생성
         this.password = password;
-        this.transactions = new ArrayList<>();
+        this.transactions = new Transactions();
     }
 
     public Bank getBank() {
@@ -52,7 +52,7 @@ public abstract class Account implements Serializable {
         return password;
     }
 
-    public List<Transaction> getTransactions() {
+    public Transactions getTransactions() {
         return transactions;
     }
 
@@ -64,4 +64,16 @@ public abstract class Account implements Serializable {
     // 이자 지급 방식 구현이 어려워 보류
     abstract void payInterest();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account account = (Account) o;
+        return bank == account.bank && type == account.type && Objects.equals(number, account.number) && Objects.equals(password, account.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bank, type, number, password);
+    }
 }
