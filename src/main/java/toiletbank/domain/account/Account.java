@@ -2,7 +2,7 @@ package toiletbank.domain.account;
 
 import java.io.Serializable;
 import toiletbank.constants.AccountType;
-import toiletbank.constants.Bank;
+import toiletbank.constants.Banks;
 import java.math.BigInteger;
 import java.util.Objects;
 
@@ -12,15 +12,15 @@ public abstract class Account implements Serializable {
 
     private static Integer value =0;
     private final Transactions transactions;
-    private final Bank bank;
+    private final Banks banks;
     private final AccountType type;
     private BigInteger balance;
     private final double interestRate;
     private final String number;
     private final String password;
 
-    public Account(Bank bank, AccountType type, BigInteger balance, double interestRate, String password) {   // AccountType에 뭐가 들어가는지 잘 모르겠어요
-        this.bank = bank;
+    public Account(Banks banks, AccountType type, BigInteger balance, double interestRate, String password) {   // AccountType에 뭐가 들어가는지 잘 모르겠어요
+        this.banks = banks;
         this.type = type;
         this.balance = balance;
         this.interestRate = interestRate;
@@ -29,8 +29,8 @@ public abstract class Account implements Serializable {
         this.transactions = new Transactions();
     }
 
-    public Bank getBank() {
-        return bank;
+    public Banks getBank() {
+        return banks;
     }
 
     public AccountType getType() {
@@ -70,11 +70,11 @@ public abstract class Account implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return bank == account.bank && type == account.type && Objects.equals(number, account.number) && Objects.equals(password, account.password);
+        return banks == account.banks && type == account.type && Objects.equals(number, account.number) && Objects.equals(password, account.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bank, type, number, password);
+        return Objects.hash(banks, type, number, password);
     }
 }
