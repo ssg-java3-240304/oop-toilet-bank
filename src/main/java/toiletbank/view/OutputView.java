@@ -30,19 +30,21 @@ public class OutputView {
 
     public void printAccounts(Map<Bank, List<List<String>>> customers) {
         int order1 = 1;
-        System.out.println("시작");
+        System.out.println();
+        System.out.println("계좌를 선택해 주세요. (ex. 1-1)");
         for (Map.Entry<Bank, List<List<String>>> bankEntry : customers.entrySet()) {
-            System.out.println(order1+". "+bankEntry.getKey().getName());
-            int order = 2;
+            System.out.println((order1++)+". "+bankEntry.getKey().getName());
+            int order2 = 1;
             for (List<String> account : bankEntry.getValue()) {
 
-                System.out.println("-" + (order++) + ". " + account.get(0) + " : " + account.get(1) + " / "
+                System.out.println("    -" + (order2++) + ". " + account.get(0) + " : " + account.get(1) + " / "
                         + account.get(2) + "원");
             }
             if (bankEntry.getValue().isEmpty()) {
-                System.out.println("- 없음");
+                System.out.println("    - 없음");
             }
         }
-
+        System.out.println();
     }
+
 }
