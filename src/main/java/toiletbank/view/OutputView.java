@@ -1,8 +1,10 @@
 package toiletbank.view;
 
 import toiletbank.domain.Transactions;
+import toiletbank.domain.bank.Bank;
 
 import java.util.List;
+import java.util.Map;
 
 public class OutputView {
 
@@ -16,13 +18,31 @@ public class OutputView {
     }
 
     public void printAccountDetails(List<String> accountInfo, Transactions transactions) {
-        System.out.println("계좌 은행 : "+accountInfo.get(0));
-        System.out.println("계좌 타입 : "+accountInfo.get(1));
-        System.out.println("계좌 번호 : "+accountInfo.get(2));
-        System.out.println("이자율 : "+accountInfo.get(3));
-        System.out.println("잔액 : "+accountInfo.get(4));
+        System.out.println("계좌 은행 : " + accountInfo.get(0));
+        System.out.println("계좌 타입 : " + accountInfo.get(1));
+        System.out.println("계좌 번호 : " + accountInfo.get(2));
+        System.out.println("이자율 : " + accountInfo.get(3));
+        System.out.println("잔액 : " + accountInfo.get(4));
         System.out.println();
         System.out.println("거래기록");
         System.out.println(transactions);
+    }
+
+    public void printAccounts(Map<Bank, List<List<String>>> customers) {
+        int order1 = 1;
+        System.out.println("시작");
+        for (Map.Entry<Bank, List<List<String>>> bankEntry : customers.entrySet()) {
+            System.out.println(order1+". "+bankEntry.getKey().getName());
+            int order = 2;
+            for (List<String> account : bankEntry.getValue()) {
+
+                System.out.println("-" + (order++) + ". " + account.get(0) + " : " + account.get(1) + " / "
+                        + account.get(2) + "원");
+            }
+            if (bankEntry.getValue().isEmpty()) {
+                System.out.println("- 없음");
+            }
+        }
+
     }
 }

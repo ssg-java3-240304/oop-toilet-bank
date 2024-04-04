@@ -20,8 +20,8 @@ public class Application {
 //        Repository repository = new Repository();
 
         // test code 입니다. 삭제될 예정
-        ToiletBank toiletBank = new ToiletBank("ToiletBank");
-        for (Map.Entry<Customer, List<Account>> customerListEntry : toiletBank.getCustomers().entrySet()) {
+        ToiletBank toiletBank = new ToiletBank();
+        for (Map.Entry<Customer, List<Account>> customerListEntry : toiletBank.getCustomers().getCustomers().entrySet()) {
             System.out.print(customerListEntry.getKey().getName());
             for (Account account : customerListEntry.getValue()) {
                 System.out.println(account.getBalance());
@@ -42,11 +42,11 @@ public class Application {
         // printAccountDetails test code
         OutputView outputView = new OutputView();
 
-
-
-        System.out.println(toiletBank.getCustomers().get(new Customer("변성일", "980101-2133336")));
         outputView.printAccountDetails(toiletBank.getAccountDetails(new Customer("변성일", "980101-2133336"),
-                toiletBank.getCustomers().get(new Customer("변성일", "980101-2133336")).get(0)),
+                toiletBank.getCustomers().getCustomers().get(new Customer("변성일", "980101-2133336")).get(0)),
                 transactions);
+
+        // printAccounts test code
+        outputView.printAccounts(toiletBank.getAccounts(new Customer("변성일", "980101-2133336")));
     }
 }
