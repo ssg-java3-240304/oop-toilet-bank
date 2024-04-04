@@ -46,6 +46,10 @@ public abstract class Bank {
             }
         }
 
+        if (result == null) {
+            return null;
+        }
+
         return List.of(result.getBank().getName(), result.getType().getName(), result.getNumber(), String.valueOf(result.getInterestRate()) + " %", df.format(result.getBalance()) + "원");
     }
 
@@ -55,6 +59,10 @@ public abstract class Bank {
             if (account.equals(customerAccount)) {
                 result = account;
             }
+        }
+
+        if (result == null) {
+            return null;
         }
 
         return result.getTransactions();
