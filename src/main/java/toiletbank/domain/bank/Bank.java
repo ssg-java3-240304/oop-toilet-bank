@@ -1,12 +1,15 @@
 package toiletbank.domain.bank;
 
 import java.io.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import toiletbank.domain.Customer;
+import toiletbank.domain.Transaction;
+import toiletbank.domain.Transactions;
 import toiletbank.domain.account.Account;
 
 public abstract class Bank {
@@ -26,13 +29,7 @@ public abstract class Bank {
         Map<Customer, List<Account>> loadedCustomers = new HashMap<>();
         File customerFile = new File("src/main/java/toiletbank/repository/", name + ".dat");
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(customerFile))) {
-            System.out.println("a");
             loadedCustomers = (Map<Customer, List<Account>>) ois.readObject();
-            System.out.println(loadedCustomers);
-        } catch (FileNotFoundException e) {
-            System.out.println("not file");
-
-            // 파일이 없을 경우 빈 맵 반환
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -40,10 +37,28 @@ public abstract class Bank {
     }
 
 
-//    public List<String> getAccountDetails() {
-//        Customer customer = new Customer()
-//        return List.of(mapcustomers)
-//    }
+    public List<String> getAccountDetails(Customer customer, Account customerAccount) {
+        DecimalFormat df = new DecimalFormat("#,###");
+        Account result = null;
+        for (Account account : customers.get(customer)) {
+            if (account.equals(customerAccount)) {
+                result = account;
+            }
+        }
+
+        return List.of(result.getBank().getName(), result.getType().getName(), result.getNumber(), String.valueOf(result.getInterestRate()) + " %", df.format(result.getBalance()) + "원");
+    }
+
+    public Transactions getTransaction(Customer customer, Account customerAccount) {
+        Account result = null;
+        for (Account account : customers.get(customer)) {
+            if (account.equals(customerAccount)) {
+                result = account;
+            }
+        }
+
+        return result.getTransactions();
+    }
 
 
     public Map<Customer, List<Account>> getCustomers() {
