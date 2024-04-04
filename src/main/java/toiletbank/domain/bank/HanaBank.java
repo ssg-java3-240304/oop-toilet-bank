@@ -5,6 +5,6 @@ import toiletbank.constants.Banks;
 
 public class HanaBank extends Bank {
     public HanaBank() {
-        super(Banks.HANA_BANK);
+        super(1,Banks.HANA_BANK);
     }
 }

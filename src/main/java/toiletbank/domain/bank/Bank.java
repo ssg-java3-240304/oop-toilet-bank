@@ -1,24 +1,17 @@
 package toiletbank.domain.bank;
 
 import java.io.*;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import toiletbank.constants.Banks;
-import toiletbank.domain.Customer;
 import toiletbank.domain.Customers;
-import toiletbank.domain.Transactions;
-import toiletbank.domain.account.Account;
+
 
 public abstract class Bank {
+    private final Integer order;
     private final Banks name;
     private final Customers customers;
 
-
-    public Bank(Banks name) {
+    public Bank(Integer order, Banks name) {
+        this.order = order;
         loadCustomers(name);
         this.name = name;
         this.customers = loadCustomers(name);
@@ -37,44 +30,15 @@ public abstract class Bank {
         return loadedCustomers;
     }
 
-
-    public List<String> getAccountDetails(Customer customer, Account customerAccount) {
-        DecimalFormat df = new DecimalFormat("#,###");
-        Account result = null;
-        for (Account account : customers.getCustomers().get(customer)) {
-            if (account.equals(customerAccount)) {
-                result = account;
-            }
-        }
-
-        if (result == null) {
-            return null;
-        }
-
-        return List.of(result.getBank().getName(), result.getType().getName(), result.getNumber(), String.valueOf(result.getInterestRate()) + " %", df.format(result.getBalance()) + "원");
-    }
-
-    public Transactions getTransaction(Customer customer, Account customerAccount) {
-        Account result = null;
-        for (Account account : customers.getCustomers().get(customer)) {
-            if (account.equals(customerAccount)) {
-                result = account;
-            }
-        }
-
-        if (result == null) {
-            return null;
-        }
-
-        return result.getTransactions();
-    }
-
-
     public Customers getCustomers() {
         return customers;
     }
 
     public String getName() {
         return name.getName();
+    }
+
+    public Integer getOrder() {
+        return order;
     }
 }
