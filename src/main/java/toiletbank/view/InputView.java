@@ -1,5 +1,7 @@
 package toiletbank.view;
 
+import toiletbank.domain.Customer;
+
 import java.math.BigInteger;
 import java.util.Scanner;
 
@@ -42,5 +44,15 @@ public class InputView {
                 =========================
                 입력 : """);
         return sc.next();
+    }
+
+    // 이름/주민번호 입력 메소드
+    public Customer getCustomerInfor() {
+        System.out.println("고객님의 이름과 주민번호를 입력해주세요.");
+        System.out.print("이름: ");
+        String name = sc.next();
+        System.out.print("주민번호: ");
+        String rnn = sc.next();
+        return new Customer(name, rnn);
     }
 }
