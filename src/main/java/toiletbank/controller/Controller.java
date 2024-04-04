@@ -17,7 +17,7 @@ public class Controller {
 
     }
 
-    private void menu() {    // 은행 업무 입력 메소드
+    private void workBank() {
         while (true) {
             switch (inputView.getWork()) {
                 case "1":
@@ -34,18 +34,18 @@ public class Controller {
         }
     }
 
-    private void AccountTypeInput() {   // 생성 계좌 타입 입력 메소드
-
-
-        while (true) {
-
-            switch (inputView.getType()) {
-//                case "1": new SavingsAccount(initializePassword()); break;
-//                case "2": new TermDeposit(initializePassword()); break;
-//                case "3": new FixedDeposit(initializePassword()); break;
-                default:
-                    System.out.println("> 잘못 입력하셨습니다.");
-            }
-        }
-    }
+//    private void AccountTypeInput() {
+//
+//
+//        while (true) {
+//
+//            switch (inputView.getType()) {
+////                case "1": new SavingsAccount(initializePassword()); break;
+////                case "2": new TermDeposit(initializePassword()); break;
+////                case "3": new FixedDeposit(initializePassword()); break;
+//                default:
+//                    System.out.println("> 잘못 입력하셨습니다.");
+//            }
+//        }
+//    }
 }
