@@ -7,6 +7,10 @@ import java.util.Scanner;
 public class InputView {
     private final Scanner sc = new Scanner(System.in);
 
+    public String getAccountSelectNumber() {
+        return sc.next();
+    }
+
     public String getPassword() {
         System.out.println("비밀번호를 입력해주세요.(4자리)");
         return sc.next();
