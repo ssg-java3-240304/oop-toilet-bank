@@ -4,7 +4,6 @@ import java.io.*;
 import toiletbank.constants.Banks;
 import toiletbank.domain.Customers;
 
-
 public abstract class Bank {
     private final Integer order;
     private final Banks name;

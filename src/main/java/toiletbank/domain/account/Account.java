@@ -5,11 +5,9 @@ import toiletbank.constants.AccountType;
 import toiletbank.constants.Banks;
 import java.math.BigInteger;
 import java.util.Objects;
-
 import toiletbank.domain.Transactions;
 
 public abstract class Account implements Serializable {
-
     private static Integer value = 0;
     private final Transactions transactions;
     private final Banks banks;

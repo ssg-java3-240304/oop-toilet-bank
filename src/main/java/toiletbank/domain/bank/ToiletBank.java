@@ -1,23 +1,17 @@
 package toiletbank.domain.bank;
 
-import java.math.BigInteger;
-import java.util.*;
+import static toiletbank.constants.Banks.*;
 
-import toiletbank.constants.Banks;
+import java.util.*;
 import toiletbank.domain.Customer;
 import toiletbank.domain.Customers;
 import toiletbank.domain.Transactions;
 import toiletbank.domain.account.Account;
-import toiletbank.domain.account.SavingsAccount;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.text.DecimalFormat;
-
-import static toiletbank.constants.Banks.*;
-//import static toiletbank.domain.account.Account.transfer;
 
 public class ToiletBank extends Bank {
     private final Map<Bank, Customers> banks;
