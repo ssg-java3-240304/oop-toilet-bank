@@ -17,7 +17,7 @@
 ---
 ## 🍕 순서도
 
-- [순서도 github](https://github.com/jectgenius/oop-toilet-bank/blob/main/oop-toilet-bank%20%EC%88%9C%EC%84%9C%EB%8F%84_%ED%9D%B0%EC%83%89%EB%B0%B0%EA%B2%BD.drawio.png)
+- [순서도 github](https://github.com/i-Veni-Vidi-Vici/spharos-oop-toilet-bank/blob/master/Toilet_Bank_System.png)
 
 - [순서도 file](./Toilet_Bank_System.png)
 
