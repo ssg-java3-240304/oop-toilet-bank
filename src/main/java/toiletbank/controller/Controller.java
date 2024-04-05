@@ -1,8 +1,8 @@
 package toiletbank.controller;
 
-import java.util.Scanner;
 import toiletbank.domain.Customer;
 import toiletbank.domain.bank.ToiletBank;
+import toiletbank.utility.Converter;
 import toiletbank.view.InputView;
 import toiletbank.view.OutputView;
 
@@ -10,10 +10,12 @@ public class Controller {
 
     private final InputView inputView;
     private final OutputView outputView;
+    private final Converter converter;
 
     public Controller() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
+        this.converter = new Converter();
     }
 
     public void run() {
@@ -25,14 +27,33 @@ public class Controller {
         Customer customer = new Customer("김나경", "990101-2111116");
         outputView.printAccounts(toiletBank.getAccounts(customer)); // 김나경님으로 로그인상태
 
-        Scanner sc = new Scanner(System.in);
-        String value = sc.next();
+        while (true) {
+            try {
+                Integer[] selectedNumber = selectNumber();
 
-        String[] splitValue = value.split("-");
-        Integer bankOrder = Integer.parseInt(splitValue[0]);
-        Integer accountOrder = Integer.parseInt(splitValue[1]);
-        outputView.printAccountDetails(toiletBank.getAccount(customer, bankOrder, accountOrder),
-                toiletBank.getTransaction(customer, bankOrder, accountOrder));
+                outputView.printAccountDetails(toiletBank.getAccount(customer, selectedNumber[0], selectedNumber[1]),
+                        toiletBank.getTransaction(customer, selectedNumber[0], selectedNumber[1]));
+                break;
+            } catch (Exception e) {
+                outputView.printError("다시 입력해주세요.");
+            }
+        }
+
+    }
+
+    private Integer[] selectNumber() {
+        Integer[] selectedNumber = null;
+
+        while (true) {
+            try {
+                selectedNumber = converter.convertToNumbers(inputView.getAccountSelectNumber());
+                break;
+            } catch (IllegalArgumentException e) {
+                outputView.printError("다시 입력해주세요.");
+            }
+        }
+
+        return selectedNumber;
     }
 
 
@@ -43,12 +64,15 @@ public class Controller {
                     showAccounts(toiletBank);
                     break;
                 case "2":
+                    break;
                 case "3":
+                    break;
                 case "4":
+                    break;
                 case "5":
                     return;
                 default:
-                    System.out.println("> 잘못 입력하셨습니다.");
+                    outputView.printError("> 잘못 입력하셨습니다.");
             }
         }
     }
