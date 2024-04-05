@@ -15,13 +15,17 @@
 4. 상세히 조회하기를 원하는 계좌를 선택하면, 은행, 계좌 타입, 계좌 번호, 이자율, 잔액, 거래 기록 등이 출력됩니다.
 
 ---
-## 🍕 순서도
-
+## 🍁 순서도
 - [순서도 github](https://github.com/i-Veni-Vidi-Vici/spharos-oop-toilet-bank/blob/master/Toilet_Bank_System.png)
 
-- [순서도 file](./Toilet_Bank_System.png)
+![순서도 file](./Toilet_Bank_System.png)
 
+## ⚓ 클래스 다이어 그램
+
+![class diagram](./class_diagram.png)
 ---
+
+
 ## 📌 기능
 
 
