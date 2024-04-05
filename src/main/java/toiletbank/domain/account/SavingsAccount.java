@@ -2,7 +2,6 @@ package toiletbank.domain.account;
 
 import toiletbank.constants.AccountType;
 import toiletbank.constants.Banks;
-
 import java.math.BigInteger;
 
 public class SavingsAccount extends Account {   // 보통 예금 계좌
