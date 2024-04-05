@@ -1,9 +1,10 @@
-package toiletbank.domain;
+package toiletbank.domain.transaction;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import toiletbank.domain.transaction.Transaction;
 
 public class Transactions implements Serializable {
     private final List<Transaction> transactions;

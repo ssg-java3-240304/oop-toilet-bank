@@ -1,4 +1,4 @@
-package toiletbank.domain;
+package toiletbank.domain.transaction;
 
 import java.io.Serializable;
 import java.math.BigInteger;

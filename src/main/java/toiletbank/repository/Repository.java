@@ -2,9 +2,9 @@ package toiletbank.repository;
 
 import java.time.LocalDateTime;
 import toiletbank.constants.Banks;
-import toiletbank.domain.Customer;
-import toiletbank.domain.Customers;
-import toiletbank.domain.Transaction;
+import toiletbank.domain.customer.Customer;
+import toiletbank.domain.customer.Customers;
+import toiletbank.domain.transaction.Transaction;
 import toiletbank.domain.account.Account;
 import toiletbank.domain.account.FixedDeposit;
 import toiletbank.domain.account.SavingsAccount;
