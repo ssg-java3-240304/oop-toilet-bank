@@ -70,10 +70,13 @@ public class Repository {
         savingsAccount.setBalance(new BigInteger("10000000"));
         savingsAccount.getTransactions()
                 .add(new Transaction(LocalDateTime.of(2024, 3, 10, 12, 10),
-                        new BigInteger("10000000"), new BigInteger("10000000")));
+                        new BigInteger("200000"), new BigInteger("10000000")));
+        savingsAccount.getTransactions()
+                .add(new Transaction(LocalDateTime.of(2024, 3, 8, 11, 1),
+                        new BigInteger("-200000"), new BigInteger("9800000")));
 
         FixedDeposit fixedDeposit = new FixedDeposit(Banks.HANA_BANK, new BigInteger("200000000"), "1234");
-        savingsAccount.getTransactions()
+        fixedDeposit.getTransactions()
                 .add(new Transaction(LocalDateTime.of(2024, 3, 10, 12, 10),
                         new BigInteger("200000000"), new BigInteger("200000000")));
 

@@ -24,6 +24,8 @@ public class Controller {
 
     private void showAccounts(ToiletBank toiletBank) {
         Customer customer = new Customer("김나경", "990101-2111116");
+        // new Customer("변성일", "980101-2133336");
+        // new Customer("심재람", "980101-2122226");
         outputView.printAccounts(toiletBank.getAccounts(customer)); // 김나경님으로 로그인상태
 
         while (true) {

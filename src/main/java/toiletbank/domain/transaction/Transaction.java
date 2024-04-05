@@ -33,7 +33,7 @@ public class Transaction implements Serializable {
     public String toString() {
         DecimalFormat df = new DecimalFormat("#,###");
 
-        return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm"))
+        return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
                 + " ("+ df.format(amount)+ "원) "
                 + (amount.intValue()>0? "입금":"송금") + " /  "
                 + "잔액 "+df.format(balance)+"원";
