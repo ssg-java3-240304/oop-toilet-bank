@@ -7,7 +7,6 @@ import toiletbank.view.InputView;
 import toiletbank.view.OutputView;
 
 public class Controller {
-
     private final InputView inputView;
     private final OutputView outputView;
     private final Converter converter;
@@ -55,7 +54,6 @@ public class Controller {
 
         return selectedNumber;
     }
-
 
     private void workBank(ToiletBank toiletBank) {
         while (true) {
