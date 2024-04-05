@@ -20,6 +20,7 @@ public class Transactions implements Serializable {
     public String toString() {
         transactions.sort(Comparator.comparing((Transaction o) -> o.getDate().toString()).reversed());
         StringBuilder sb = new StringBuilder();
+
         for (Transaction transaction : transactions) {
             sb.append(transaction.toString()).append("\n");
         }

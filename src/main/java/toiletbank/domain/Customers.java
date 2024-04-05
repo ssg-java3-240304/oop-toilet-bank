@@ -1,7 +1,6 @@
 package toiletbank.domain;
 
 import toiletbank.domain.account.Account;
-
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
