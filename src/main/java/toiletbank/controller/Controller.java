@@ -1,6 +1,6 @@
 package toiletbank.controller;
 
-import toiletbank.domain.Customer;
+import toiletbank.domain.customer.Customer;
 import toiletbank.domain.bank.ToiletBank;
 import toiletbank.utility.Converter;
 import toiletbank.view.InputView;

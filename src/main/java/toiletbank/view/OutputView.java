@@ -1,6 +1,6 @@
 package toiletbank.view;
 
-import toiletbank.domain.Transactions;
+import toiletbank.domain.transaction.Transactions;
 import toiletbank.domain.bank.Bank;
 import java.util.List;
 import java.util.Map;

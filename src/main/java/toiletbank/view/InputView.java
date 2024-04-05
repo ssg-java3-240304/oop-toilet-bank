@@ -1,6 +1,6 @@
 package toiletbank.view;
 
-import toiletbank.domain.Customer;
+import toiletbank.domain.customer.Customer;
 import java.math.BigInteger;
 import java.util.Scanner;
 

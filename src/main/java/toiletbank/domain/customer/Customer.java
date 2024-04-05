@@ -1,4 +1,4 @@
-package toiletbank.domain;
+package toiletbank.domain.customer;
 
 import java.io.Serializable;
 import java.util.Objects;
