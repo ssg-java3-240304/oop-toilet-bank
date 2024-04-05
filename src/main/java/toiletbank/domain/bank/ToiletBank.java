@@ -1,7 +1,5 @@
 package toiletbank.domain.bank;
 
-
-
 import static toiletbank.constants.Banks.TOILET_BANK;
 
 import java.util.ArrayList;
